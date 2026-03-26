@@ -15,16 +15,16 @@ CREATE TABLE demande (
     district VARCHAR(255) NOT NULL,
     client_id INT NOT NULL,
     FOREIGN KEY (client_id) REFERENCES client(id)
-);
+); 
 
 CREATE TABLE type_devis (
     id SERIAL PRIMARY KEY,
     libelle VARCHAR(255) NOT NULL
-);
+); 
 
 CREATE TABLE devis (
     id SERIAL PRIMARY KEY,
-    montant_total DOUBLE PRECISION NOT NULL,
+    montant_total DOUBLE PRECISION NOT NULL,/pas de montant
     date DATE NOT NULL,
     type_devis_id INT REFERENCES type_devis(id),
     demande_id INT REFERENCES demande(id)
@@ -51,5 +51,6 @@ CREATE TABLE demande_statut (
     id SERIAL PRIMARY KEY,
     date DATE NOT NULL,
     travaux_id INT REFERENCES travaux(id),
-    status_id INT REFERENCES status(id)
+    status_id INT REFERENCES status(id),
+    demande_id INT REFERENCES demande(id) 
 );

@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Demande {
@@ -21,6 +23,9 @@ public class Demande {
     @ManyToOne
     @JoinColumn(name = "client_id")
     private Client client;
+
+    @OneToMany(mappedBy = "demande", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<DemandeStatut> statuts = new ArrayList<>();
 
     public Demande() {}
 
@@ -45,4 +50,14 @@ public class Demande {
 
     public Client getClient() { return client; }
     public void setClient(Client client) { this.client = client; }
+
+    public List<DemandeStatut> getStatuts() { return statuts; }
+    public void setStatuts(List<DemandeStatut> statuts) { this.statuts = statuts; }
+
+    public String getCurrentStatus() {
+        if (statuts == null || statuts.isEmpty()) return "Inconnu";
+        DemandeStatut lastStatut = statuts.get(statuts.size() - 1);
+        if (lastStatut == null || lastStatut.getStatus() == null) return "Inconnu";
+        return lastStatut.getStatus().getLibelle();
+    }
 }

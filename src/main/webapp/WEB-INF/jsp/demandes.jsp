@@ -10,7 +10,7 @@
 <body>
 
     <nav class="navbar">
-        <div class="nav-brand">💧 Fourrage d'Eau</div>
+        <div class="nav-brand">Fourrage d'Eau</div>
         <div class="nav-links">
             <a href="${pageContext.request.contextPath}/clients" class="nav-item">Clients</a>
             <a href="${pageContext.request.contextPath}/demandes" class="nav-item">Demandes</a>
@@ -53,6 +53,7 @@
                 <th>Client</th>
                 <th>Lieu</th>
                 <th>District</th>
+                <th>Statut</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -64,6 +65,7 @@
                     <td>${demande.client.nom}</td>
                     <td>${demande.lieu}</td>
                     <td>${demande.district}</td>
+                    <td><span class="status-badge">${demande.currentStatus}</span></td>
                     <td>
                         <a href="${pageContext.request.contextPath}/demandes/delete/${demande.id}" class="btn btn-danger" onclick="return confirm('Supprimer cette demande ?')">Supprimer</a>
                     </td>
