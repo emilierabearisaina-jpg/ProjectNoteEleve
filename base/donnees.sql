@@ -11,3 +11,8 @@ INSERT INTO status (libelle) VALUES
 ('Devis crée'),
 ('Acceptation devis'),
 ('Refusé');
+
+INSERT INTO type_devis (libelle) VALUES 
+('Standard'),
+('Premium'),
+('Maintenance');

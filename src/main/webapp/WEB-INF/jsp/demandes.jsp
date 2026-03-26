@@ -14,6 +14,7 @@
         <div class="nav-links">
             <a href="${pageContext.request.contextPath}/clients" class="nav-item">Clients</a>
             <a href="${pageContext.request.contextPath}/demandes" class="nav-item">Demandes</a>
+            <a href="${pageContext.request.contextPath}/devis/new" class="nav-item">Devis</a>
         </div>
     </nav>
 
